@@ -9,11 +9,12 @@ function TaskList({ tasks }) {
 
   const [tasksToDisplay, setTasks] = useState(tasks)
 
-  const handleDelete = (key) => {
-    
-    const updatedList = tasksToDisplay.filter(task => task.key !== key)
+  const handleDelete = (event) => {
+    const taskToDelete = event.target.parentNode
+    const updatedList = tasksToDisplay.filter(task => task !== taskToDelete)
+    // const updatedList = tasksToDisplay.filter(task => task.key !== key)
     setTasks(updatedList)
-    console.log('click')
+    console.log(event.target.parentNode)
   }
 
   return (
