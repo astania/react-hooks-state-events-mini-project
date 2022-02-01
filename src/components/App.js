@@ -8,7 +8,7 @@ import { CATEGORIES, TASKS } from "../data";
 // console.log({ CATEGORIES, TASKS });
 
 function App() {
-  const [tasks, setTasks] = useState(TASKS)
+  const [tasks, setTasks] = useState([TASKS])
 
   const addTask = (event) => {
     event.preventDefault()

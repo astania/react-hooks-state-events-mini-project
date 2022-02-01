@@ -7,7 +7,8 @@ import Task from "./Task"
 
 function TaskList({ tasks }) {
 
-  const [tasksToDisplay] = useState(tasks)
+  const [tasksToDisplay] = useState([...tasks])
+  console.log(tasks)
 
   const handleDelete = (event) => {
     const taskToDelete = event.target.parentNode
