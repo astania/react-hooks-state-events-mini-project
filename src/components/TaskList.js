@@ -7,14 +7,11 @@ import Task from "./Task"
 
 function TaskList({ tasks }) {
 
-  const [tasksToDisplay, setTasks] = useState(tasks)
+  const [tasksToDisplay] = useState(tasks)
 
   const handleDelete = (event) => {
     const taskToDelete = event.target.parentNode
-    const updatedList = tasksToDisplay.filter(task => task !== taskToDelete)
-    // const updatedList = tasksToDisplay.filter(task => task.key !== key)
-    setTasks(updatedList)
-    console.log(event.target.parentNode)
+    taskToDelete.remove()
   }
 
   return (

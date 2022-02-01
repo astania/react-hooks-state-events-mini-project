@@ -18,14 +18,22 @@ function App() {
   }
 
   const filterByCategory = (event) => {
-    const buttonCategory = event.target.key
-    if(buttonCategory === "All"){
-      setTasks(tasks)
-      console.log("all was clicked")
+    const buttonCategory = event.target
+    if(buttonCategory.className === 'selected'){
+      buttonCategory.removeAttribute('class')
     } else{
-      const filteredTasks = tasks.filter(task => task.category === buttonCategory)
+      buttonCategory.classList.add("selected")
+    }
+
+   
+
+    if(buttonCategory.textContent === "All"){
+      setTasks(tasks)
+      console.log(buttonCategory.textContent)
+    } else{
+      const filteredTasks = tasks.filter(task => task.category === buttonCategory.textContent)
       setTasks(filteredTasks)
-      console.log("button other than 'all' was clicked")
+      console.log(buttonCategory.textContent)
     }
   }
 
