@@ -20,7 +20,7 @@ function TaskList({ tasks }) {
   return (
     <div className="tasks">
       {tasksToDisplay.map((task) => (
-        <Task text={task.text} category={task.category} handleDelete={handleDelete} />
+        <Task key={task.text} text={task.text} category={task.category} handleDelete={handleDelete} />
       )
 
       )}
