@@ -11,7 +11,7 @@ function App() {
   const [tasks, setTasks] = useState(TASKS)
   let [selectedCategory, setSelectedCategory] = useState("All")
 
-  const addTask = (newTask) => {
+  const onTaskFormSubmit = (newTask) => {
     setTasks([...tasks, newTask])
   }
 
@@ -42,7 +42,7 @@ function App() {
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={CATEGORIES} filterByCategory={filterByCategory} selectedCategory={selectedCategory} />
-      <NewTaskForm addTask={addTask} categories={CATEGORIES} />
+      <NewTaskForm onTaskFormSubmit={onTaskFormSubmit} categories={CATEGORIES} />
       <TaskList tasks={tasks} />
     </div>
   );
