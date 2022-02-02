@@ -9,52 +9,41 @@ import { CATEGORIES, TASKS } from "../data";
 
 function App() {
   const [tasks, setTasks] = useState(TASKS)
-  let [isSelected, setSelected] = useState(false)
+  let [selectedCategory, setSelectedCategory] = useState("All")
 
   const addTask = (event) => {
     event.preventDefault()
-    console.log(event)
-
-    // setTasks([...tasks, task])
+    setTasks([...tasks, addTask])
   }
 
-
-
   const filterByCategory = (event) => {
-    setSelected = !isSelected
+
     const buttonCategory = event.target
-    const filteredTasks = tasks.filter(task => task.category === buttonCategory.textContent)
+    console.log(selectedCategory)
 
-    if(setSelected){
-      buttonCategory.classList.add("selected")
-      buttonCategory.textContent === "All" ? setTasks(tasks) : setTasks(filteredTasks)
-    } else{
-      buttonCategory.removeAttribute('class')
-      setTasks(filteredTasks)
+
+    if (buttonCategory.className === 'selected') {
+      setSelectedCategory("All")
+      setTasks(TASKS)
+    } else {
+      if (buttonCategory.textContent === "All") {
+        setTasks(TASKS)
+        console.log(buttonCategory.textContent)
+      } else {
+        let filteredTasks = TASKS.filter(task => task.category === buttonCategory.textContent)
+        setTasks(filteredTasks)
+        console.log(buttonCategory.textContent)
+      }
+      setSelectedCategory(buttonCategory.textContent)
     }
-  //   if(buttonCategory.className === 'selected'){
-  //     buttonCategory.removeAttribute('class')
-  //   } else{
-  //     buttonCategory.classList.add("selected")
-  //   }
 
-   
-
-  //   if(buttonCategory.textContent === "All"){
-  //     setTasks(tasks)
-  //     console.log(buttonCategory.textContent)
-  //   } else{
-      
-  //     setTasks(filteredTasks)
-  //     console.log(buttonCategory.textContent)
-  //   }
   }
 
   return (
     <div className="App">
       <h2>My tasks</h2>
-      <CategoryFilter categories={CATEGORIES} filterByCategory={filterByCategory} />
-      <NewTaskForm addTask={addTask} categories={CATEGORIES}/>
+      <CategoryFilter categories={CATEGORIES} filterByCategory={filterByCategory} selectedCategory={selectedCategory} />
+      <NewTaskForm addTask={addTask} categories={CATEGORIES} />
       <TaskList tasks={tasks} />
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 
-function Task({ text, category, handleDelete}) {
+function Task({ text, category, handleDelete }) {
 
   return (
     <div className="task">
