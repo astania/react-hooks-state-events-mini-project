@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-function NewTaskForm({ addTask, categories }) {
+function NewTaskForm({ onTaskFormSubmit, categories }) {
   const initialState = {
     text: "",
     category: ""
   }
-  const[newTask, setNewTask] = useState(initialState)
+  const [newTask, setNewTask] = useState(initialState)
 
   const handleTaskChange = (event) => {
     const name = event.target.name
@@ -16,18 +16,18 @@ function NewTaskForm({ addTask, categories }) {
     })
   }
 
-  const handleSubmit = (event) =>{
+  const handleSubmit = (event) => {
     event.preventDefault()
-    addTask(newTask)
+    onTaskFormSubmit(newTask)
     setNewTask(initialState)
   }
-  
-  
+
+
   return (
     <form className="new-task-form" onSubmit={handleSubmit}>
       <label>
         Details
-        <input type="text" name="text" onChange={handleTaskChange} value={newTask.text}/>
+        <input type="text" name="text" onChange={handleTaskChange} value={newTask.text} />
       </label>
       <label>
         Category
