@@ -11,9 +11,8 @@ function App() {
   const [tasks, setTasks] = useState(TASKS)
   let [selectedCategory, setSelectedCategory] = useState("All")
 
-  const addTask = (event) => {
-    event.preventDefault()
-    setTasks([...tasks, addTask])
+  const addTask = (newTask) => {
+    setTasks([...tasks, newTask])
   }
 
   const filterByCategory = (event) => {
