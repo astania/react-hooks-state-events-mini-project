@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 function NewTaskForm({ addTask, categories }) {
-  const [newTask, setNewTask] = useState({
+  const[newTask, setNewTask] = useState({
     text: "",
     category: ""
   })
@@ -15,13 +15,13 @@ function NewTaskForm({ addTask, categories }) {
     })
   }
 
-
-
+  
+  
   return (
     <form className="new-task-form" onSubmit={addTask}>
       <label>
         Details
-        <input type="text" name="text" onChange={handleTaskChange} />
+        <input type="text" name="text" onChange={handleTaskChange}/>
       </label>
       <label>
         Category
